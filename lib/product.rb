@@ -1,10 +1,6 @@
 class Product
   attr_accessor :price, :stock
 
-  def self.from_file(file)
-    raise "NotImplementedError."
-  end
-
   def initialize(params)
     @price = params[:price]
     @stock = params[:stock]
@@ -18,5 +14,4 @@ class Product
     @price = params[:price] if params[:price]
     @stock = params[:stock] if params[:stock]
   end
-
 end

@@ -1,4 +1,6 @@
 class ProductCollection
+  attr_reader :products
+
   PRODUCT_TYPES = {
     film: {dir: 'films', class: Film},
     book: {dir: 'books', class: Book},
@@ -11,6 +13,7 @@ class ProductCollection
 
   def self.from_dir(file)
     products = []
+
     PRODUCT_TYPES.each do |type, hash|
       product_dir = hash[:dir]
       product_class = hash[:class]
@@ -20,11 +23,7 @@ class ProductCollection
       end
     end
 
-    self.new(products)
-  end
-
-  def to_a
-    @products
+    new(products)
   end
 
   def sort!(params)
@@ -40,5 +39,9 @@ class ProductCollection
     @products.reverse! if params[:order] == :asc
 
     self
+  end
+
+  def to_s
+    @products.map.with_index(1) { |product, index| "#{index}. #{product}" }.join("\n")
   end
 end
