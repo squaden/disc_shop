@@ -18,11 +18,11 @@ while user_input != 0 do
   puts
   user_input = STDIN.gets.to_i
   product = collection.products[user_input - 1]
-  if product.stock == 0
-    puts "Данного товара нет в наличии, выберите что-то другое"
-    next
-  end
   if user_input > 0
+    if product.stock == 0
+      puts "Данного товара нет в наличии, выберите что-то другое"
+      next
+    end
     product.stock -= 1
     puts "Вы выбрали #{product}"
     cart.add_to_cart(product)
