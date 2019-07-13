@@ -1,5 +1,5 @@
 class Cart
-  attr_reader :products, :total_price, :amount
+  attr_reader :products, :total_price
 
   def initialize
     @products = []
