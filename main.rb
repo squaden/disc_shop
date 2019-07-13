@@ -8,12 +8,11 @@ require_relative 'lib/product_collection'
 collection = ProductCollection.from_dir(File.dirname(__FILE__) + '/data')
 cart = Cart.new
 
-total_price = 0
 user_input = nil
 
 while user_input != 0 do
   puts "Что хотите купить:"
-  puts collection
+  puts collection.sort!(by: :price, order: :asc)
   puts "0. Выход"
   puts
   user_input = STDIN.gets.to_i
@@ -26,10 +25,10 @@ while user_input != 0 do
     product.stock -= 1
     puts "Вы выбрали #{product}"
     cart.add_to_cart(product)
-    total_price += product.price
+    cart.count_price(product.price)
   else
     puts "Вы купили:"
-    puts cart
-    puts "С вас #{total_price} руб. Спасибо за покупки!"
+    cart.print_counts_product
+    puts "С вас #{cart.total_price} руб. Спасибо за покупки!"
   end
 end
