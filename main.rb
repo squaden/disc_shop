@@ -24,8 +24,7 @@ while user_input != 0 do
     end
     product.stock -= 1
     puts "Вы выбрали #{product}"
-    cart.add_to_cart(product)
-    cart.count_price(product.price)
+    cart.add_to_cart(product, product.price)
   else
     puts "Вы купили:"
     cart.print_counts_product
