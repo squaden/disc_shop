@@ -6,9 +6,9 @@ class Cart
     @total_price = 0
   end
 
-  def add_to_cart(product, price)
+  def add_to_cart(product)
     @products << product
-    @total_price += price
+    @total_price += product.price
   end
 
   def count_product
