@@ -12,7 +12,7 @@ class Cart
   end
 
   def count_product
-    @products.each_with_object(Hash.new 0) do |product, counter|
+    @products.each_with_object(Hash.new (0)) do |product, counter|
       counter[product] += 1
     end
   end
